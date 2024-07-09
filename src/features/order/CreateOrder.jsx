@@ -1,12 +1,13 @@
 import { redirect, useActionData, useNavigation } from 'react-router-dom';
 import Button from '../../ui/Button';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createOrder } from '../../services/apiRestaurant';
 import { clearCart, getCart, getTotalCartPrice } from '../cart/cartSlice';
 import EmptyCart from '../cart/EmptyCart';
 import store from '../../store';
 import { formatCurrency } from '../../utils/helpers';
 import { useState } from 'react';
+import { fetchAddress } from '../user/userSlice';
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -20,6 +21,7 @@ function CreateOrder() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   const formErrors = useActionData();
+  const dispatch = useDispatch()
 
   const cart = useSelector(getCart);
   const totalCartPrice = useSelector(getTotalCartPrice);
@@ -32,6 +34,8 @@ function CreateOrder() {
     <div className="px-4 py-6">
       <h2 className="mb-8 text-xl font-semibold">Ready to order? Let's go!</h2>
 
+      <button onClick={()=> dispatch(fetchAddress())}>Get position</button>
+      
       {/* <form method="POST" action="/order/new"> */}
       <form method="POST" action="/order/new">
         <div className="dm:flex-row mb-5 flex flex-col gap-2 sm:items-center">

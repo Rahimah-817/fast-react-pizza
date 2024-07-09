@@ -18,8 +18,7 @@ function Home() {
         <CreateUser />
       ) : (
         <Button to="/menu" type="primary">
-          Continue ordering, {username}{' '}
-          <span className="rounded-full">🍕</span>
+          Continue ordering, {username}
         </Button>
       )}
     </div>
