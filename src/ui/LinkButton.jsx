@@ -1,19 +1,19 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-function LinkButton({ Children, to }) {
+function LinkButton({ children, to }) {
   const navigate = useNavigate();
-  const className = 'hover:text-blue-650 text-sm text-blue-500 hover:underline';
+  const className = 'text-sm text-blue-500 hover:text-blue-600 hover:underline';
 
   if (to === '-1')
     return (
       <button className={className} onClick={() => navigate(-1)}>
-        {Children}
+        {children}
       </button>
     );
 
   return (
     <Link to={to} className={className}>
-      {Children}
+      {children}
     </Link>
   );
 }

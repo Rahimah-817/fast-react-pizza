@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '../../ui/Button';
 import { useDispatch } from 'react-redux';
-import updateName from './userSlice';
+import { updateName } from './userSlice';
 import { useNavigate } from 'react-router-dom';
 
 function CreateUser() {
@@ -33,7 +33,7 @@ function CreateUser() {
 
       {username !== '' && (
         <div>
-          <Button className="primary">Start ordering</Button>
+          <Button type="primary">Start ordering</Button>
         </div>
       )}
     </form>
